@@ -3,55 +3,189 @@
 {% block title %}CONECTA-HUB{% endblock %} 
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat da Faculdade</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    <!--aqui é o fundo etals-->
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #247b91;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main {
+      display: flex;
+      width: 90%;
+      max-width: 1000px;
+      height: 90vh;
+      background-color: #030308;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    
+    .sidebar {
+      width: 30%;
+      background-color: #090779;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.4em;
+      border-bottom: 1px solid rgba(54, 30, 109, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .user-list, .room-list {
+      font-size: 0.9em;
+      line-height: 1.6;
+    }
+
+    /* Chat area */
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #f0f0f0;
+    }
+
+    .chat-header {
+      padding: 15px;
+      background-color: #000000;
+      color: white;
+      font-weight: bold;
+    }
+
+    .chat-display {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-display li {
+      background-color: #dcf8c6;
+      padding: 10px 15px;
+      border-radius: 8px;
+      max-width: 70%;
+      align-self: flex-start;
+    }
+
+    .chat-display li.me {
+      background-color: #d1e7dd;
+      align-self: flex-end;
+    }
+
+    .form-msg {
+      display: flex;
+      padding: 15px;
+      background-color: #e5ddd5;
+      gap: 10px;
+    }
+
+    .form-msg input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .form-msg button {
+      background-color: #010002;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .form-join {
+      padding: 20px;
+      background-color: #fff3cd;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .form-join input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .form-join button {
+      background-color: #000000;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
 <body>
-    <main>
-      <style>div {
-        width: 200px; 
-        height: 50px;
-        background-color: #f0f0f0; 
-        border: 1px solid black; 
-        padding: 12px; 
-        margin: 10px;
-        position: absolute 
-      
-      }</style>
-      <form class="form-join">
-        <input
-          type="text"
-          id="name"
-          maxlength="8"
-          placeholder="Seu nome"
-          size="5"
-          required
-        />
-        <input
-          type="text"
-          id="room"
-          placeholder="Escolha um chat"
-          size="5"
-          required
-        />
-        <div>
-          <p>oiii.     
-          </p>
-        </div>
+  <main>
+    <aside class="sidebar">
+      <h2>Chat</h2>
+      <div class="room-list">
+        <strong>Salas:</strong>
+        <p># Geral</p>
         
+  
       
-        <button id="join" type="submit">Join</button>
+      </div>
+      <div class="user-list">
+        <strong>Online:</strong>
+        
+        <p>Bea</p>
+        <p>Raffaela</p>
+      </div>
+    </aside>
+
+  
+    <section class="chat-area">
+      <div class="chat-header">Chat - ADS</div>
+
+      <form class="form-join">
+        <input type="text" id="name" maxlength="8" placeholder="Seu nome" required />
+        <input type="text" id="room" placeholder="Sala" required />
+        <button id="join" type="submit">Entrar</button>
       </form>
 
-      <ul class="chat-display"></ul>
+      <ul class="chat-display">
+        <li>Bem-vindo ao chat</li>
+        <li class="me">valeu.... e tals</li>
+        <li>kkkk</li>
 
-      <p class="user-list"></p>
-
-      <p class="room-list"></p>
-
-      <p class="activity"></p>
+      </ul>
 
       <form class="form-msg">
-        <input type="text" id="message" placeholder="Sua mensagem" required />
+        <input type="text" id="message" placeholder="Digite sua mensagem..." required />
         <button type="submit">Enviar</button>
       </form>
-    </main>
-  </body>
+    </section>
+  </main>
+</body>
+</html>
 {% endblock %}
